@@ -1,19 +1,30 @@
-import {
-  AccordionRoot,
-  AccordionHeader,
-  AccordionPanel,
-} from "@/components/accordion";
+import UncontrolledAccordion from "./UncontrolledAccordion";
+import ControlledAccordion from "./ControlledAccordion";
+import NonCollapsibleAccordion from "./NonCollapsibleAccordion";
 
 export default function Home() {
   return (
-    <AccordionRoot>
-      <AccordionHeader>Header</AccordionHeader>
-      <AccordionPanel>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed itaque
-        voluptate minus ipsum porro blanditiis minima, provident perferendis
-        vitae error accusantium rem quidem atque, distinctio, repellat
-        excepturi. Aspernatur, provident tempore.
-      </AccordionPanel>
-    </AccordionRoot>
+    <section className="space-y-5">
+      <section className="space-y-2">
+        <h2 className="font-bold text-xl text-blue-500">
+          Uncontrolled Accordion
+        </h2>
+        <UncontrolledAccordion />
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="font-bold text-xl text-blue-500">
+          Controlled Accordion
+        </h2>
+        <ControlledAccordion />
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="font-bold text-xl text-blue-500">
+          Non Collapsible Accordion
+        </h2>
+        <NonCollapsibleAccordion />
+      </section>
+    </section>
   );
 }
