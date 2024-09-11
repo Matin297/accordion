@@ -1,12 +1,12 @@
 "use client";
 
-import { createContext, ReactNode, Dispatch, SetStateAction, use } from "react";
+import { createContext, ReactNode, use } from "react";
 
 export type AccordionContextType = {
   panelId: string;
   headerId: string;
   expanded: boolean;
-  setExpanded: Dispatch<SetStateAction<boolean>>;
+  onExpandedChange: () => void;
 };
 
 export const AccordionContext = createContext<AccordionContextType | null>(

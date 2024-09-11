@@ -4,27 +4,42 @@ import { PropsWithChildren, useState, useId } from "react";
 import { AccordionContextProvider } from "./context";
 
 interface AccordionProps extends PropsWithChildren {
-  initial?: boolean;
+  value?: boolean;
   panelId?: string;
   headerId?: string;
+  initial?: boolean;
+  onChange?: (v: boolean) => void;
 }
 
 export default function AccordionRoot({
+  value,
   children,
   initial = false,
   panelId: panelIdProp,
   headerId: headerIdProp,
+  onChange: onChangeProp,
 }: AccordionProps) {
-  const [expanded, setExpanded] = useState(initial);
   const panelId = useId();
   const headerId = useId();
 
+  const [state, setState] = useState(initial);
+
+  const expanded = value ?? state;
+
+  function onChange() {
+    if (value == undefined) {
+      setState((s) => !s);
+    }
+
+    onChangeProp?.(!expanded);
+  }
+
   return (
-    <div>
+    <div className="space-y-1">
       <AccordionContextProvider
         value={{
           expanded,
-          setExpanded,
+          onExpandedChange: onChange,
           panelId: panelIdProp ?? panelId,
           headerId: headerIdProp ?? headerId,
         }}

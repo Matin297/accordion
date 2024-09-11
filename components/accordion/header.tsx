@@ -11,15 +11,15 @@ export default function AccordionHeader({
   as: Heading = "h2",
   children,
 }: AccordionHeaderProps) {
-  const { expanded, setExpanded, panelId, headerId } = useAccordion();
+  const { expanded, onExpandedChange, panelId, headerId } = useAccordion();
 
   return (
-    <Heading>
+    <Heading className="font-semibold">
       <button
         id={headerId}
         aria-controls={panelId}
         aria-expanded={expanded}
-        onClick={() => setExpanded((e) => !e)}
+        onClick={onExpandedChange}
       >
         {children}
       </button>
